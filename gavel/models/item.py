@@ -9,8 +9,8 @@ view_table = db.Table('view',
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    location = db.Column(db.Text, nullable=False)
+    technicalName = db.Column(db.Text, nullable=False)
+    alias = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     active = db.Column(db.Boolean, default=True, nullable=False)
     viewed = db.relationship('Annotator', secondary=view_table)
@@ -19,9 +19,9 @@ class Item(db.Model):
     mu = db.Column(db.Float)
     sigma_sq = db.Column(db.Float)
 
-    def __init__(self, name, location, description):
-        self.name = name
-        self.location = location
+    def __init__(self, technicalName, alias, description):
+        self.technicalName = technicalName
+        self.alias = alias
         self.description = description
         self.mu = crowd_bt.MU_PRIOR
         self.sigma_sq = crowd_bt.SIGMA_SQ_PRIOR

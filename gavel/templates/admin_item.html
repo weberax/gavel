@@ -12,10 +12,10 @@
         <td>{{ item.id }}</td>
       </tr>
       <tr>
-        <th>Name</th>
+        <th>technical Name</th>
         <td>
           <form action="{{ url_for('item_patch') }}" method="post">
-            <input type="text" name="name" value="{{ item.name }}">
+            <input type="text" name="technicalName" value="{{ item.technicalName }}">
             <input type="submit" name="action" value="Update" class="neutral">
             <input type="hidden" name="item_id" value="{{ item.id }}">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
@@ -23,10 +23,10 @@
         </td>
       </tr>
       <tr>
-        <th>Location</th>
+        <th>Alias</th>
         <td>
           <form action="{{ url_for('item_patch') }}" method="post">
-            <input type="text" name="location" value="{{ item.location }}">
+            <input type="text" name="alias" value="{{ item.alias }}">
             <input type="submit" name="action" value="Update" class="neutral">
             <input type="hidden" name="item_id" value="{{ item.id }}">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">

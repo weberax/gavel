@@ -60,7 +60,7 @@
         <td>
           <ul>
             {% for item in seen %}
-            <li><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.name }} [{{ item.id }}]</a></li>
+            <li><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.technicalName }} [{{ item.id }}]</a></li>
             {% endfor %}
           </ul>
         </td>
@@ -70,7 +70,7 @@
         <td>
           <ul>
             {% for item in skipped %}
-            <li><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.name }} [{{ item.id }}]</a></li>
+            <li><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.technicalName }} [{{ item.id }}]</a></li>
             {% endfor %}
           </ul>
         </td>

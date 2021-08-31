@@ -25,8 +25,8 @@
       <thead>
         <tr>
           <th data-sort-method="number">Id</th>
-          <th data-sort-method="caseInsensitiveSort">Name</th>
-          <th data-sort-method="caseInsensitiveSort">Location</th>
+          <th data-sort-method="caseInsensitiveSort">technicalName</th>
+          <th data-sort-method="caseInsensitiveSort">Alias</th>
           <th data-sort-method="caseInsensitiveSort">Description</th>
           <th class="sort-default" data-sort-method="number" data-sort-order="desc">Mu</th>
           <th data-sort-method="number">Sigma Squared</th>
@@ -42,8 +42,8 @@
         {% for item in items %}
         <tr class="{{ 'disabled' if not item.active else 'prioritized' if item.prioritized else '' }}">
           <td><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.id }}</a></td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.location }}</td>
+          <td>{{ item.technicalName }}</td>
+          <td>{{ item.alias }}</td>
           <td class="preserve-formatting">{{ item.description }}</td>
           <td>{{ item.mu | round(4) }}</td>
           <td>{{ item.sigma_sq | round(4) }}</td>
@@ -149,7 +149,7 @@
     <h2>Add Projects</h2>
   </div>
   <div class="info">
-    <p>Add name, location, description (CSV format)</p>
+    <p>Add name, alias, description (CSV format)</p>
     <textarea name="data" form="item_form"></textarea>
     <form action="{{ url_for('item') }}" method="post" id="item_form" enctype="multipart/form-data">
       <div class="upload-container">

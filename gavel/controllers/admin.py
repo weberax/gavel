@@ -126,10 +126,10 @@ def item_patch():
         item = Item.by_id(request.form['item_id'])
         if not item:
             return utils.user_error('Item %s not found ' % request.form['item_id'])
-        if 'location' in request.form:
-            item.location = request.form['location']
-        if 'name' in request.form:
-            item.name = request.form['name']
+        if 'alias' in request.form:
+            item.alias = request.form['alias']
+        if 'technicalName' in request.form:
+            item.technicalName = request.form['technicalName']
         if 'description' in request.form:
             item.description = request.form['description']
         db.session.commit()
