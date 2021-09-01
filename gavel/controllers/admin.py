@@ -146,8 +146,8 @@ def annotator():
         if data:
             # validate data
             for index, row in enumerate(data):
-                if len(row) != 3:
-                    return utils.user_error('Bad data: row %d has %d elements (expecting 3)' % (index + 1, len(row)))
+                if len(row) != 2:
+                    return utils.user_error('Bad data: row %d has %d elements (expecting 2)' % (index + 1, len(row)))
             def tx():
                 for row in data:
                     annotator = Annotator(*row)

@@ -26,7 +26,7 @@ class Annotator(db.Model):
     alpha = db.Column(db.Float)
     beta = db.Column(db.Float)
 
-    def __init__(self, name, email, description):
+    def __init__(self, name, email):
         self.name = name
         self.email = email
         self.alpha = crowd_bt.ALPHA_PRIOR
