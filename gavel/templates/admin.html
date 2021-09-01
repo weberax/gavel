@@ -18,16 +18,14 @@
 
 <div class="item">
   <div class="banner">
-    <h2>Projects</h2>
+    <h2>Tricks</h2>
   </div>
   <div class="info">
     <table id="items">
       <thead>
         <tr>
           <th data-sort-method="number">Id</th>
-          <th data-sort-method="caseInsensitiveSort">technicalName</th>
-          <th data-sort-method="caseInsensitiveSort">Alias</th>
-          <th data-sort-method="caseInsensitiveSort">Description</th>
+          <th data-sort-method="caseInsensitiveSort">technical Name</th>
           <th class="sort-default" data-sort-method="number" data-sort-order="desc">Mu</th>
           <th data-sort-method="number">Sigma Squared</th>
           <th data-sort-method="number">Votes</th>
@@ -43,8 +41,6 @@
         <tr class="{{ 'disabled' if not item.active else 'prioritized' if item.prioritized else '' }}">
           <td><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.id }}</a></td>
           <td>{{ item.technicalName }}</td>
-          <td>{{ item.alias }}</td>
-          <td class="preserve-formatting">{{ item.description }}</td>
           <td>{{ item.mu | round(4) }}</td>
           <td>{{ item.sigma_sq | round(4) }}</td>
           <td>{{ item_counts.get(item.id, 0) }}</td>
@@ -92,7 +88,6 @@
           <th class="sort-default" data-sort-method="number">Id</th>
           <th data-sort-method="caseInsensitiveSort">Name</th>
           <th data-sort-method="caseInsensitiveSort">Email</th>
-          <th data-sort-method="caseInsensitiveSort">Description</th>
           <th data-sort-method="number">Votes</th>
           <th data-sort-method="number">Next (Id)</th>
           <th data-sort-method="number">Previous (Id)</th>
@@ -108,7 +103,6 @@
           <td><a href="{{ url_for('annotator_detail', annotator_id=annotator.id) }}" class="colored">{{ annotator.id }}</a></td>
           <td>{{ annotator.name }}</td>
           <td>{{ annotator.email }}</td>
-          <td>{{ annotator.description }}</td>
           <td>{{ counts.get(annotator.id, 0) }}</td>
           <td data-sort="{{ annotator.next_id or -1 }}">{{ annotator.next_id }}</td>
           <td data-sort="{{ annotator.prev_id or -1 }}">{{ annotator.prev_id }}</td>
@@ -146,10 +140,11 @@
 
 <div class="item">
   <div class="banner">
-    <h2>Add Projects</h2>
+    <h2>Add Tricks</h2>
   </div>
   <div class="info">
-    <p>Add name, alias, description (CSV format)</p>
+    <p>Add tricks in with the right CSV format (should work from the google document)</p>
+    <p>alias,Category,technical Name,established by,year established,link to video,start pos,end pos,difficulty level,description,tips 0,tips 1,tips 2,tips 3,tips 4,tips 5</p>
     <textarea name="data" form="item_form"></textarea>
     <form action="{{ url_for('item') }}" method="post" id="item_form" enctype="multipart/form-data">
       <div class="upload-container">
@@ -166,7 +161,7 @@
     <h2>Add Judges</h2>
   </div>
   <div class="info">
-    <p>Add name, email, description (CSV format)</p>
+    <p>Add names of judges, with email (one per line)</p>
     <textarea name="data" form="annotator_form"></textarea>
     <form action="{{ url_for('annotator') }}" method="post" id="annotator_form" enctype="multipart/form-data">
       <div class="upload-container">

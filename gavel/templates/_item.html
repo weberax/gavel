@@ -1,5 +1,15 @@
 <div class="info">
-  <h2>{{ item.technicalName }}</h2>
+  <h2>{{ item.alias }}</h2>
+  <div style="display: flex;">
+    <div style="left; flex-grow: 1;">
+      <p><strong>Technical Name: </strong>{{ item.technicalName }}</p>
+    </div>
+    <div align=right>
+      <div>
+        <p><strong>category: </strong>{{ item.category }}</p>
+        <!-- <p><strong>from: </strong>{{ item.startPos }}<strong> to: </strong>{{ item.endPos }}</p> --!>
+      </div>
+    </div>
+  </div>
   <p class="preserve-formatting">{{ item.description }}</p>
-  <p><strong>Alias: </strong>{{ item.alias }}</p>
 </div>
