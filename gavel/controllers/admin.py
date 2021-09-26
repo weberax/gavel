@@ -263,3 +263,20 @@ def email_invite_links(annotators):
         utils.send_sendgrid_emails(emails)
     else:
         utils.send_emails.delay(emails)
+
+
+@app.route('/admin/register', methods=['POST'])
+def register():
+    action = request.form['action']
+    if action == 'Submit':
+        data = parse_upload_form()
+        if data:
+            def tx():
+                annotator = Annotator(*data[0],"self registerd")
+                db.session.add(annotator)
+                db.session.commit()
+                return annotator
+            annotator = with_retries(tx)
+            if annotator:
+                return redirect(annotator_link(annotator))
+    return redirect(url_for('index'))

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<div class="item">
+  <div class="info">
+    <p>To start please enter your name</p>
+    <input name="data" form="annotator_form"></input><br></br>
+    <form action="{{ url_for('register') }}" method="post" id="annotator_form" enctype="multipart/form-data">
+      <input type="submit" name="action" value="Submit" class="button-full positive">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    </form>
+  </div>
+</div>
+{% endblock %}

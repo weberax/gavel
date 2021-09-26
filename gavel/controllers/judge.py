@@ -44,8 +44,7 @@ def index():
     annotator = get_current_annotator()
     if annotator is None:
         return render_template(
-            'logged_out.html',
-            content=utils.render_markdown(settings.LOGGED_OUT_MESSAGE)
+            'new_annotator.html'
         )
     else:
         if Setting.value_of(SETTING_CLOSED) == SETTING_TRUE:

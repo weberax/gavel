@@ -29,10 +29,11 @@ def with_retries(tx_func):
     '''
     while True:
         try:
-            tx_func()
+            ret = tx_func()
         except sqlalchemy.exc.OperationalError as err:
             if not isinstance(err.orig, psycopg2.errors.SerializationFailure):
                 raise
             db.session.rollback()
         else:
+            return ret
             break
