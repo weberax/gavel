@@ -50,6 +50,7 @@ def index():
             'new_annotator.html'
         )
     else:
+        items_ignore = len(annotator.ignore)
         if Setting.value_of(SETTING_CLOSED) == SETTING_TRUE:
             return render_template(
                 'closed.html',
@@ -71,7 +72,7 @@ def index():
         elif annotator.prev is None:
             return render_template('begin.html', item=annotator.next)
         else:
-            return render_template('vote.html', prev=annotator.prev, next=annotator.next, an_link=annotator_link(annotator))
+            return render_template('vote.html', prev=annotator.prev, next=annotator.next, an_link=annotator_link(annotator), seen=items_ignore)
 
 @app.route('/vote', methods=['POST'])
 @requires_open(redirect_to='index')
