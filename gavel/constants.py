@@ -24,8 +24,7 @@ you'll decide whether it's harder or easier than the one you looked at
 **beforehand**.
 
 If at any point, you can't tell the difficulty of a particular trick, you can click the
-'Skip' button. **This is your personal opinion, it's ok if you are not sure about something
-but try to not only guess**
+'Skip' button. **Please rate only trick you can do! Don't try to guess!**
 
 This is an effort to try ranking all tricks in an order, which could be used for judging
 future competitions. **Once you make a decision, you can't take it back**.
