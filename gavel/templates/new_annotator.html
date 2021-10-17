@@ -5,6 +5,12 @@
   <div class="info">
     <p>To start please enter your name</p>
     <input name="data" form="annotator_form"></input><br></br>
+    <p><strong>optional:</strong> select up to which level of ticks you want to compare</p>
+    <select name="level" form="annotator_form">
+      <option value="100"}>all</option>
+      <option value="70"}>medium (skip 30% of the hardest tricks)</option>
+      <option value="50"}>easy (skip 50% of the hardest tricks)</option>
+    </select>
     <form action="{{ url_for('register') }}" method="post" id="annotator_form" enctype="multipart/form-data">
       <input type="submit" name="action" value="Submit" class="button-full positive">
       <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">

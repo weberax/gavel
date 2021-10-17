@@ -270,9 +270,10 @@ def register():
     action = request.form['action']
     if action == 'Submit':
         data = parse_upload_form()
+        level = request.form['level']
         if data:
             def tx():
-                annotator = Annotator(*data[0],"self registerd")
+                annotator = Annotator(*data[0], level)
                 db.session.add(annotator)
                 db.session.commit()
                 return annotator

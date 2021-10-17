@@ -175,9 +175,20 @@ def preferred_items(annotator):
     else:
         available_items = Item.query.filter(Item.active == True).all()
 
+    # filter the levels
+    try:
+        percent_tricks = int(annotator.email)
+        sorted_avail = list(sorted(available_items, key=lambda trick:trick.mu))
+        all_tricks = Item.query.filter(Item.active == True).all()
+        max_mu = all_tricks[len(all_tricks)*percent_tricks//100].mu
+        selected_levels = [i for i in available_items if i.mu <= max_mu]
+    except:
+        selected_levels = available_items
+
+
     prioritized_items = [i for i in available_items if i.prioritized]
 
-    items = prioritized_items if prioritized_items else available_items
+    items = prioritized_items if prioritized_items else selected_levels
 
     annotators = Annotator.query.filter(
         (Annotator.active == True) & (Annotator.next != None) & (Annotator.updated != None)
