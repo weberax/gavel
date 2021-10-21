@@ -24,7 +24,7 @@
     <table id="items">
       <thead>
         <tr>
-          <th data-sort-method="number">Id</th>
+          <th data-sort-method="caseInsensitiveSort">Alias</th>
           <th data-sort-method="caseInsensitiveSort">technical Name</th>
           <th class="sort-default" data-sort-method="number" data-sort-order="desc">Mu</th>
           <th data-sort-method="number">Sigma Squared</th>
@@ -39,7 +39,7 @@
       <tbody>
         {% for item in items %}
         <tr class="{{ 'disabled' if not item.active else 'prioritized' if item.prioritized else '' }}">
-          <td><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.id }}</a></td>
+          <td><a href="{{ url_for('item_detail', item_id=item.id) }}" class="colored">{{ item.alias }}</a></td>
           <td>{{ item.technicalName }}</td>
           <td>{{ item.mu | round(4) }}</td>
           <td>{{ item.sigma_sq | round(4) }}</td>
